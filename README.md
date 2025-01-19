@@ -5,6 +5,7 @@ Nama Anggota kelompok
 3. Magfira Aini / magfiraaini
 4. Manarul Huda/ Manarulisme
 5. Ari Wilyan / ariwilyan
+6. Lisna Marni Waruwu/lisnawaruwu
 
 ---
 
