@@ -4,6 +4,16 @@
         "password": "Ap4hay0!",
         "firstname": "testing_quiz_2_updated",
         "lastname": "sanbercode_updated",
-        "new_password": "Ap4hay0!b4rU"
+        "new_password": "Ap4hay0!b4rU",
+        "company": "SanberCode",
+        "telephone": "081243215678",
+        "street_1": "Jl. Sudirman",
+        "street_2": "Kebayoran Baru",
+        "street_3": "Blok A No.186",
+        "city": "Jakarta",
+        "region_id": "Armed Forces Pacific",
+        "region": "Jakarta",
+        "zip": "35141",
+        "country": "Indonesia"
     }    
 ]

@@ -4,18 +4,13 @@ describe('Magento Update Scenarios', () => {
     beforeEach(() => {
         cy.visit('')
     })
-    function randomEmail(){
-        const randomString = Math.random().toString(36).substring(2,9)
-        const email = randomString + "@mailinator.com"
-        return email
-    }
-    describe('Update Functionality', () => {
-        it('update success edit firstname and lastname', () => {
-            // login
-            cy.fixture('users.json').then((users) => {
-                const datauser = users[0];
-                magentoPage.login(datauser.email, datauser.password)
-            })
+
+    it('update success edit firstname and lastname', () => {
+        // login
+        cy.fixture('users.json').then((users) => {
+            const datauser = users[0];
+            magentoPage.login(datauser.email, datauser.password)
+
             // check already logged in and show the user profile button
             cy.get(':nth-child(2) > .greet > .logged-in').should('contain.text', 'sanbercode')
 
@@ -33,12 +28,14 @@ describe('Magento Update Scenarios', () => {
             cy.klik('#form-validate > .actions-toolbar > div.primary > .action > span')
             cy.get('.message-success > div').should('contain.text', 'You saved the account information.')
         })
-        it('update failed current password not match on change password', () => {
-            // login
-            cy.fixture('users.json').then((users) => {
-                const datauser = users[0];
-                magentoPage.login(datauser.email, datauser.password)
-            })
+    })
+
+    it('update failed current password not match on change password', () => {
+        // login
+        cy.fixture('users.json').then((users) => {
+            const datauser = users[0];
+            magentoPage.login(datauser.email, datauser.password)
+
             // check already logged in and show the user profile button
             cy.get(':nth-child(2) > .greet > .logged-in').should('contain.text', 'sanbercode')
 
@@ -59,6 +56,72 @@ describe('Magento Update Scenarios', () => {
             // klik save
             cy.klik('#form-validate > .actions-toolbar > div.primary > .action > span')
             cy.get('.message-error > div').should('contain.text', "The password doesn't match this account. Verify the password and try again.")
+        })
+    })
+    
+    it('update success edit address', () => {
+        // login
+        cy.fixture('users.json').then((users) => {
+            const datauser = users[0];
+            magentoPage.login(datauser.email, datauser.password)
+
+            // check already logged in and show the user profile button
+            cy.get(':nth-child(2) > .greet > .logged-in').should('contain.text', 'sanbercode')
+
+            // klik user profile to update information data (using POM)
+            magentoPage.check_is_logged_in()
+            
+            // edit address (using custom commands)
+            cy.klik('.box-billing-address > .box-actions > .action > span')
+
+            // input new information & clear current input (using custom commands)
+            cy.ketik('#company', datauser.company)
+            cy.ketik('#telephone', datauser.telephone)
+            cy.ketik('#street_1', datauser.street_1)
+            cy.ketik('#street_2', datauser.street_2)
+            cy.ketik('#street_3', datauser.street_3)
+            cy.ketik('#city', datauser.city)
+            // cy.select_option('#region_id', datauser.region_id)
+            cy.ketik('#region', datauser.region)
+            cy.ketik('#zip', datauser.zip)
+            cy.select_option('#country', datauser.country)
+            
+            // klik save
+            cy.klik('#form-validate > .actions-toolbar > div.primary > .action > span')
+            cy.get('.message-success > div').should('contain.text', 'You saved the address.')
+        })
+    })
+
+    it('update failed edit address', () => {
+        // login
+        cy.fixture('users.json').then((users) => {
+            const datauser = users[0];
+            magentoPage.login(datauser.email, datauser.password)
+
+            // check already logged in and show the user profile button
+            cy.get(':nth-child(2) > .greet > .logged-in').should('contain.text', 'sanbercode')
+
+            // klik user profile to update information data (using POM)
+            magentoPage.check_is_logged_in()
+            
+            // edit address (using custom commands)
+            cy.klik('.box-billing-address > .box-actions > .action > span')
+
+            // input new information & clear current input (using custom commands)
+            cy.ketik('#company', datauser.company)
+            cy.ketik('#telephone', datauser.telephone)
+            cy.ketik('#street_1', datauser.street_1)
+            cy.ketik('#street_2', datauser.street_2)
+            cy.ketik('#street_3', datauser.street_3)
+            cy.ketik('#city', datauser.city)
+            // cy.select_option('#region_id', datauser.region_id)
+            cy.ketik('#region', datauser.region)
+            cy.ketik('#zip', ' ')
+            cy.select_option('#country', datauser.country)
+            
+            // klik save
+            cy.klik('#form-validate > .actions-toolbar > div.primary > .action > span')
+            cy.get('#zip-error').should('contain.text', 'This is a required field.')
         })
     })
 })

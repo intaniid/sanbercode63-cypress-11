@@ -32,6 +32,10 @@ Cypress.Commands.add("klik", (locator) => {
   cy.get(locator).should("be.visible").click();
 });
 
+Cypress.Commands.add("select_option", (locator, text) => {
+  cy.get(locator).select(text)
+});
+
 Cypress.Commands.add(
   "create",
   (firstname, lastname, email, password, password_confirmation) => {
