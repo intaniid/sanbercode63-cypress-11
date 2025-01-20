@@ -24,15 +24,23 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('ketik', (locator, text) => {
-    cy.get(locator)
-    .should('be.visible')
-    .clear()
-    .type(text)
-})
+Cypress.Commands.add("ketik", (locator, text) => {
+  cy.get(locator).should("be.visible").clear().type(text);
+});
 
-Cypress.Commands.add('klik', (locator) => {
-    cy.get(locator)
-    .should('be.visible')
-    .click()
-})
+Cypress.Commands.add("klik", (locator) => {
+  cy.get(locator).should("be.visible").click();
+});
+
+Cypress.Commands.add(
+  "create",
+  (firstname, lastname, email, password, password_confirmation) => {
+    // cy.visit("/customer/account/create/");
+    cy.get("#firstname").type(firstname);
+    cy.get("#lastname").type(lastname);
+    cy.get("#password").type(password);
+    cy.get("#email_address").type(email);
+    cy.get("#password-confirmation").type(password_confirmation);
+    cy.get("#form-validate > .actions-toolbar > div.primary > .action").click();
+  }
+);

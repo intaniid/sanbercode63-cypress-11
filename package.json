@@ -1,0 +1,13 @@
+{
+  "name": "sanbercode63-cypress-11",
+  "version": "1.0.0",
+  "description": "Nama Anggota kelompok",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "test_cli": "cypress run --browser chrome --spec 'cypress/e2e/web-test/Create_account.cy.js'"
+  },
+  "author": "",
+  "license": "ISC"
+}
