@@ -16,7 +16,7 @@ class CreateUserPage {
   }
 
   fillPassword(password) {
-    cy.get('input[name="password"]').type(password);
+    cy.get("#password").type(password);
   }
 
   fillPasswordConfirmation(passwordConfirmation) {
@@ -24,7 +24,9 @@ class CreateUserPage {
   }
 
   submit() {
-    cy.get('button[type="submit"]').click();
+    cy.get(
+      "#form-validate > .actions-toolbar > div.primary > .action > span"
+    ).click();
   }
 }
 

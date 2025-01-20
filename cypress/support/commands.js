@@ -1,7 +1,7 @@
 Cypress.Commands.add(
   "create",
   (firstname, lastname, email, password, password_confirmation) => {
-    cy.visit("/customer/account/create/");
+    // cy.visit("/customer/account/create/");
     cy.get("#firstname").type(firstname);
     cy.get("#lastname").type(lastname);
     cy.get("#password").type(password);
