@@ -120,7 +120,7 @@ describe("Register Account", () => {
     );
   });
 
-  it.only("Fill Duplicate Email", () => {
+  it("Fill Duplicate Email", () => {
     CreateUserPage.fillFirstName("Abdul");
     CreateUserPage.fillLastName("Jabar");
     CreateUserPage.fillEmail("Abdulhalim@gmail.com");
