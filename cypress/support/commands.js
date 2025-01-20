@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('ketik', (locator, text) => {
+    cy.get(locator)
+    .should('be.visible')
+    .clear()
+    .type(text)
+})
+
+Cypress.Commands.add('klik', (locator) => {
+    cy.get(locator)
+    .should('be.visible')
+    .click()
+})
