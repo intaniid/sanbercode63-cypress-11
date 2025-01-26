@@ -47,4 +47,10 @@ Cypress.Commands.add(
     cy.get("#password-confirmation").type(password_confirmation);
     cy.get("#form-validate > .actions-toolbar > div.primary > .action").click();
   }
+
+  // Cypress.Commands.add('LoginSaucedemo', (username, Password) => { 
+    //cy.get('#user-name').type(username)
+    //cy.get('#password').type(password)
+    //cy.get('#login-button').click()
+  //})
 );
